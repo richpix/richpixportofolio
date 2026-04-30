@@ -212,22 +212,29 @@
         </div>
 
         <div class="contact-form reveal">
-          <form id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="formName" data-i18n="form_name">Nombre</label>
-              <input type="text" id="formName" placeholder="Tu nombre completo" title="Ingresa tu nombre" required>
-            </div>
-            <div class="form-group">
-              <label for="formEmail" data-i18n="form_email">Correo</label>
-              <input type="email" id="formEmail" placeholder="tu@email.com" title="Ingresa tu correo electrónico" required>
-            </div>
-            <div class="form-group">
-              <label for="formMessage" data-i18n="form_message">Mensaje</label>
-              <textarea id="formMessage" placeholder="Escribe tu mensaje aquí..." title="Ingresa tu mensaje" required></textarea>
-            </div>
-            <button type="submit" class="form-submit" data-i18n="form_submit">Enviar Mensaje</button>
-          </form>
-        </div>
+  <form id="contactForm" action="https://formsubmit.co/pool.ricardo.1fm@gmail.com" method="POST" novalidate>
+    
+    <!-- Campos ocultos necesarios para FormSubmit -->
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde el formulario de contacto">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://soyricardo.cc">
+
+    <div class="form-group">
+      <label for="formName" data-i18n="form_name">Nombre</label>
+      <input type="text" id="formName" name="name" placeholder="Tu nombre completo" title="Ingresa tu nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="formEmail" data-i18n="form_email">Correo</label>
+      <input type="email" id="formEmail" name="email" placeholder="tu@email.com" title="Ingresa tu correo electrónico" required>
+    </div>
+    <div class="form-group">
+      <label for="formMessage" data-i18n="form_message">Mensaje</label>
+      <textarea id="formMessage" name="message" placeholder="Escribe tu mensaje aquí..." title="Ingresa tu mensaje" required></textarea>
+    </div>
+    <button type="submit" class="form-submit" data-i18n="form_submit">Enviar Mensaje</button>
+  </form>
+</div>
       </div>
     </section>
   </main>
