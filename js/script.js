@@ -245,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('email', email);
         formData.append('message', message);
         formData.append('_subject', 'Nuevo mensaje desde tu portfolio');
-        formData.append('_captcha', 'true');
         formData.append('_template', 'table');
         
         // Enviar a FormSubmit
@@ -255,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast(currentLang === 'es' ? '✅ ¡Mensaje enviado con éxito! Te contactaré pronto.' : '✅ Message sent successfully! I\'ll contact you soon.');
           contactForm.reset();
         } else {
-          showToast(currentLang === 'es' ? '❌ Error al enviar. Por favor, intenta de nuevo o escribe directamente al correo.' : '❌ Error sending message. Please try again or email me directly.', true);
+          showToast(currentLang === 'es' ? '❌ Error al enviar el mensaje. Por favor, intenta de nuevo o escribe directamente al correo.' : '❌ Error sending message. Please try again or email me directly.', true);
         }
         
         // Restaurar botón

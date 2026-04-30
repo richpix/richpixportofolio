@@ -564,7 +564,8 @@ footer {
   position: fixed; bottom: 30px; right: 30px; z-index: 999;
   background: var(--bg); box-shadow: var(--neu-flat);
   border-radius: var(--radius-sm); padding: 16px 24px;
-  font-size: 0.88rem; font-weight: 600; color: var(--primary);
+  font-size: 0.88rem; font-weight: 600; color: #ffffff;
   transform: translateY(80px); opacity: 0; transition: all .3s;
+  
 }
 #toast.show { transform: none; opacity: 1; background-color: #ffffff; }
