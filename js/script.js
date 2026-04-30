@@ -182,84 +182,48 @@ function showToast(msg, isError = false) {
   t.classList.add('show');
   setTimeout(() => {
     t.classList.remove('show');
-    t.style.backgroundColor = ''; // Resetear después
+    t.style.backgroundColor = ''; 
   }, 3200);
-}
-
-// Función para enviar el formulario a FormSubmit
-async function submitFormToFormSubmit(formData) {
-  try {
-    const response = await fetch('https://formsubmit.co/pool.ricardo.1fm@gmail.com', {
-      method: 'POST',
-      body: formData
-    });
-    
-    if (response.ok) {
-      return { success: true };
-    } else {
-      return { success: false, error: 'Error en el servidor' };
-    }
-  } catch (error) {
-    return { success: false, error: 'Error de conexión' };
-  }
 }
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     // Modal events
-    document.getElementById('modalClose').onclick = closeModal;
-    document.getElementById('modalOverlay').onclick = e => {
-      if (e.target === document.getElementById('modalOverlay')) closeModal();
-    };
+    const modalClose = document.getElementById('modalClose');
+    if (modalClose) modalClose.onclick = closeModal;
+    
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (modalOverlay) {
+      modalOverlay.onclick = e => {
+        if (e.target === modalOverlay) closeModal();
+      };
+    }
+    
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     // Formulario de contacto con FormSubmit
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
+      contactForm.addEventListener('submit', (e) => {
         const name = document.getElementById('formName').value.trim();
         const email = document.getElementById('formEmail').value.trim();
         const message = document.getElementById('formMessage').value.trim();
         
         if (!name || !email || !message) {
+          e.preventDefault();
           showToast(i18n[currentLang].toast_err || 'Por favor, completa todos los campos', true);
           return;
         }
         
         if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-          showToast('Por favor, ingresa un correo válido', true);
+          e.preventDefault();
+          showToast(currentLang === 'es' ? 'Por favor, ingresa un correo válido' : 'Please enter a valid email', true);
           return;
         }
         
-        // Mostrar loading en el botón
         const submitBtn = contactForm.querySelector('.form-submit');
-        const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
         submitBtn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
-        
-        // Crear FormData
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('message', message);
-        formData.append('_subject', 'Nuevo mensaje desde tu portfolio');
-        formData.append('_template', 'table');
-        
-        // Enviar a FormSubmit
-        const result = await submitFormToFormSubmit(formData);
-        
-        if (result.success) {
-          showToast(currentLang === 'es' ? '✅ ¡Mensaje enviado con éxito! Te contactaré pronto.' : '✅ Message sent successfully! I\'ll contact you soon.');
-          contactForm.reset();
-        } else {
-          showToast(currentLang === 'es' ? '❌ Error al enviar el mensaje. Por favor, intenta de nuevo o escribe directamente al correo.' : '❌ Error sending message. Please try again or email me directly.', true);
-        }
-        
-        // Restaurar botón
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
       });
     }
 
@@ -276,7 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Idioma
-    document.getElementById('langToggle').addEventListener('click', toggleLang);
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) langToggle.addEventListener('click', toggleLang);
 
     // Footer year
     const yearEl = document.getElementById('footerYear');
