@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ricardo Pool Tuz — Ingeniero de Software Full-Stack | Cancún, México</title>
+  <meta name="description"
+    content="Desarrollador Full-Stack & Systems Engineer especializado en Rust, TypeScript y React. Creo apps de escritorio nativas con Tauri, plataformas web de alto rendimiento y herramientas con IA. Disponible para proyectos freelance desde Cancún, México.">
+  <meta name="keywords"
+    content="Ricardo Pool, ingeniero de software, desarrollador full stack, Rust developer, TypeScript, React, Next.js, Tauri, Cancún, México, freelance, software engineer, web developer">
+  <meta name="author" content="Ricardo Samir Pool Tuz">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#e0e5ec">
+  <meta name="color-scheme" content="light">
+
+  <link rel="canonical" href="https://soyricardo.cc">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ricardo Pool — Portfolio">
+  <meta property="og:title" content="Ricardo Pool Tuz — Full-Stack & Systems Engineer">
+  <meta property="og:description"
+    content="Desarrollador especializado en Rust, TypeScript y React. Apps nativas con Tauri, plataformas web de alto rendimiento e integración de IA. Cancún, México.">
+  <meta property="og:url" content="https://soyricardo.cc">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://soyricardo.cc/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ricardo Pool Tuz — Software Engineer Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ricardo Pool Tuz — Full-Stack & Systems Engineer">
+  <meta name="twitter:description"
+    content="Desarrollador especializado en Rust, TypeScript y React. Apps nativas con Tauri, plataformas web e integración de IA. Cancún, México.">
+  <meta name="twitter:image" content="https://soyricardo.cc/og-image.png">
+  <meta name="twitter:image:alt" content="Ricardo Pool Tuz — Software Engineer Portfolio">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://soyricardo.cc/#person",
+        "name": "Ricardo Samir Pool Tuz",
+        "alternateName": "Ricardo Pool",
+        "url": "https://soyricardo.cc",
+        "image": "https://soyricardo.cc/og-image.png",
+        "jobTitle": "Software Engineer",
+        "description": "Full-Stack & Systems Developer especializado en Rust, TypeScript, React y herramientas de automatización con IA.",
+        "email": "[EMAIL_ADDRESS]",
+        "telephone": "+52-998-338-9485",
+        "sameAs": [
+          "https://github.com/richpix"
+        ],
+        "address": {    
+          "@type": "PostalAddress",
+          "addressLocality": "Cancún",
+          "addressRegion": "Quintana Roo",
+          "addressCountry": "MX"
+        },
+        "knowsAbout": [
+          "Rust", "TypeScript", "JavaScript", "React", "Next.js",
+          "Tauri", "Node.js", "PostgreSQL", "Supabase", "LLM Integration"
+        ],
+        "knowsLanguage": ["es", "en"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://soyricardo.cc/#website",
+        "url": "https://soyricardo.cc",
+        "name": "Ricardo Pool — Portfolio",
+        "description": "Portafolio profesional de Ricardo Pool Tuz, Ingeniero de Software Full-Stack.",
+        "author": { "@id": "https://soyricardo.cc/#person" },
+        "inLanguage": ["es", "en"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Ri<span>.</span>cardo</div>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Stack</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+      <li><button class="lang-btn" id="langToggle">🌐 EN</button></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <!-- HERO -->
+    <div class="hero" id="about">
+      <div class="hero-inner">
+        <div class="hero-card reveal">
+          <div class="hero-tag" data-i18n="hero_tag">Software Engineer</div>
+          <h1 class="hero-name">Ricardo<br><span>Pool Tuz</span></h1>
+          <p class="hero-role">&lt; Full-Stack &amp; Systems Developer /&gt;</p>
+          <p class="hero-desc" data-i18n="hero_desc">
+            Desarrollador apasionado por construir aplicaciones de escritorio nativas, plataformas web de alto
+            rendimiento y herramientas de automatización con IA. Especializado en Rust, TypeScript y el ecosistema
+            moderno de JavaScript.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn-primary" data-i18n="hero_btn_projects">Ver Proyectos</a>
+            <a href="https://github.com/richpix" target="_blank" rel="noopener" class="btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.907-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.254-.447-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.547 1.377.203 2.393.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">3+</div>
+              <div class="stat-label" data-i18n="stat_projects">Proyectos</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">5+</div>
+              <div class="stat-label" data-i18n="stat_langs">Lenguajes</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">Rust</div>
+              <div class="stat-label" data-i18n="stat_fav">Favorito</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">IA</div>
+              <div class="stat-label" data-i18n="stat_focus">Enfoque</div>
+            </div>
+          </div>
+          <div class="location-chip">
+            <div class="dot"></div>
+            <div>
+              <p data-i18n="location">Cancún, Q.Roo, México</p>
+              <span data-i18n="available">Disponible para proyectos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <p class="section-label" data-i18n="skills_label">Habilidades</p>
+      <h2 class="section-title" data-i18n="skills_title">Stack Tecnológico</h2>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="section-label" data-i18n="projects_label">Portafolio</p>
+      <h2 class="section-title" data-i18n="projects_title">Proyectos Destacados</h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-label" data-i18n="contact_label">Contacto</p>
+      <h2 class="section-title" data-i18n="contact_title">Hablemos</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info reveal">
+          <a href="mailto:pool.ricardo.1fm@gmail.com" class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <p>pool.ricardo.1fm@gmail.com</p>
+              <span data-i18n="contact_email_label">Correo electrónico</span>
+            </div>
+          </a>
+         
+          <a href="https://github.com/richpix" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.907-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.254-.447-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.547 1.377.203 2.393.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+              </svg>
+            </div>
+            <div class="contact-text">
+              <p>github.com/richpix</p>
+              <span>GitHub</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-form reveal">
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="formName" data-i18n="form_name">Nombre</label>
+              <input type="text" id="formName" placeholder="Tu nombre completo" title="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="formEmail" data-i18n="form_email">Correo</label>
+              <input type="email" id="formEmail" placeholder="tu@email.com" title="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="form-group">
+              <label for="formMessage" data-i18n="form_message">Mensaje</label>
+              <textarea id="formMessage" placeholder="Escribe tu mensaje aquí..." title="Ingresa tu mensaje" required></textarea>
+            </div>
+            <button type="submit" class="form-submit" data-i18n="form_submit">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tag" id="modalTag"></div>
+          <h2 class="modal-title" id="modalTitle"></h2>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-media" id="modalMedia"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-stack" id="modalStack"></div>
+      </div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <footer role="contentinfo" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="Ricardo Pool ">
+    <meta itemprop="jobTitle" content="Software Engineer">
+    <p>© <span id="footerYear"></span> <span itemprop="name">Ricardo Pool </span> ·
+      <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <span itemprop="addressLocality">Cancún</span>, <span itemprop="addressRegion">México</span>
+      </span> ·
+      <a href="https://github.com/richpix" itemprop="sameAs" rel="noopener noreferrer"
+        style="color:var(--primary);text-decoration:none">@richpix</a>
+    </p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
