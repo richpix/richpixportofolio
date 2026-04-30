@@ -114,7 +114,6 @@ function renderGallery(container) {
     ${galleryImages.length > 1 ? `<div class="gallery-dots">${dots}</div>` : ''}
   `;
 
-  // Attach events manually since they're in global scope in original but now in script scope
   const prev = container.querySelector('.prev');
   const next = container.querySelector('.next');
   if (prev) prev.onclick = () => goGallery((galleryIndex - 1 + galleryImages.length) % galleryImages.length);
@@ -143,9 +142,9 @@ function applyI18n() {
   const fp = document.getElementById('formName');
   const fe = document.getElementById('formEmail');
   const fm = document.getElementById('formMessage');
-  if (fp) fp.placeholder = currentLang === 'es' ? 'Tu nombre' : 'Your name';
-  if (fe) fe.placeholder = currentLang === 'es' ? 'tu@correo.com' : 'you@email.com';
-  if (fm) fm.placeholder = currentLang === 'es' ? '¿En qué puedo ayudarte?' : 'How can I help you?';
+  if (fp) fp.placeholder = currentLang === 'es' ? 'Tu nombre completo' : 'Your full name';
+  if (fe) fe.placeholder = currentLang === 'es' ? 'tu@email.com' : 'you@email.com';
+  if (fm) fm.placeholder = currentLang === 'es' ? 'Escribe tu mensaje aquí...' : 'Write your message here...';
 }
 
 function toggleLang() {
@@ -175,51 +174,116 @@ function observeReveal() {
   items.forEach(i => obs.observe(i));
 }
 
-function showToast(msg) {
+function showToast(msg, isError = false) {
   const t = document.getElementById('toast');
   if (!t) return;
   t.textContent = msg;
+  t.style.backgroundColor = isError ? '#dc3545' : '#28a745';
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3200);
+  setTimeout(() => {
+    t.classList.remove('show');
+    t.style.backgroundColor = ''; // Resetear después
+  }, 3200);
+}
+
+// Función para enviar el formulario a FormSubmit
+async function submitFormToFormSubmit(formData) {
+  try {
+    const response = await fetch('https://formsubmit.co/pool.ricardo.1fm@gmail.com', {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (response.ok) {
+      return { success: true };
+    } else {
+      return { success: false, error: 'Error en el servidor' };
+    }
+  } catch (error) {
+    return { success: false, error: 'Error de conexión' };
+  }
 }
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+    // Modal events
     document.getElementById('modalClose').onclick = closeModal;
     document.getElementById('modalOverlay').onclick = e => {
       if (e.target === document.getElementById('modalOverlay')) closeModal();
     };
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    document.getElementById('contactForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const n = document.getElementById('formName').value.trim();
-      const em = document.getElementById('formEmail').value.trim();
-      const msg = document.getElementById('formMessage').value.trim();
-      if (!n || !em || !msg) { showToast(i18n[currentLang].toast_err); return; }
-      const mailto = `mailto:pool.ricardo.1fm@gmail.com?subject=Contacto desde portfolio - ${encodeURIComponent(n)}&body=${encodeURIComponent(msg)}%0A%0A${encodeURIComponent(em)}`;
-      window.location.href = mailto;
-      showToast(i18n[currentLang].toast_ok);
-      e.target.reset();
-    });
+    // Formulario de contacto con FormSubmit
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+        
+        if (!name || !email || !message) {
+          showToast(i18n[currentLang].toast_err || 'Por favor, completa todos los campos', true);
+          return;
+        }
+        
+        if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+          showToast('Por favor, ingresa un correo válido', true);
+          return;
+        }
+        
+        // Mostrar loading en el botón
+        const submitBtn = contactForm.querySelector('.form-submit');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
+        
+        // Crear FormData
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('message', message);
+        formData.append('_subject', 'Nuevo mensaje desde tu portfolio');
+        formData.append('_captcha', 'true');
+        formData.append('_template', 'table');
+        
+        // Enviar a FormSubmit
+        const result = await submitFormToFormSubmit(formData);
+        
+        if (result.success) {
+          showToast(currentLang === 'es' ? '✅ ¡Mensaje enviado con éxito! Te contactaré pronto.' : '✅ Message sent successfully! I\'ll contact you soon.');
+          contactForm.reset();
+        } else {
+          showToast(currentLang === 'es' ? '❌ Error al enviar. Por favor, intenta de nuevo o escribe directamente al correo.' : '❌ Error sending message. Please try again or email me directly.', true);
+        }
+        
+        // Restaurar botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
+    }
 
-    document.getElementById('hamburger').addEventListener('click', () => {
-      
-      document.getElementById('navLinks').classList.toggle('open');
-    });
+    // Hamburguesa y navegación
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+      });
+    }
     
     document.querySelectorAll('.nav-links a').forEach(a => {
-      
       a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
     });
 
+    // Idioma
     document.getElementById('langToggle').addEventListener('click', toggleLang);
 
     // Footer year
     const yearEl = document.getElementById('footerYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Initialize
+    // Inicializar
     renderSkills();
     renderProjects();
     observeReveal();

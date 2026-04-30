@@ -567,4 +567,4 @@ footer {
   font-size: 0.88rem; font-weight: 600; color: var(--primary);
   transform: translateY(80px); opacity: 0; transition: all .3s;
 }
-#toast.show { transform: none; opacity: 1; }
+#toast.show { transform: none; opacity: 1; background-color: #ffffff; }
