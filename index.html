@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" prefix="og: https://ogp.me/ns#">
+<html lang="es" prefix="og: https://ogp.me/ns#" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -179,6 +179,9 @@
       <li role="none"><a href="#skills" data-i18n="nav_skills" role="menuitem">Stack</a></li>
       <li role="none"><a href="#projects" data-i18n="nav_projects" role="menuitem">Proyectos</a></li>
       <li role="none"><a href="#contact" data-i18n="nav_contact" role="menuitem">Contacto</a></li>
+      <li role="none"><button class="theme-btn" id="themeToggle" aria-label="Cambiar a modo oscuro">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button></li>
       <li role="none"><button class="lang-btn" id="langToggle" aria-label="Cambiar idioma a inglés">🌐 EN</button></li>
     </ul>
   </nav>
@@ -262,7 +265,9 @@
         <div class="contact-info reveal">
           <a href="mailto:pool.ricardo.1fm@gmail.com" class="contact-item"
             aria-label="Enviar correo a Ricardo Pool Tuz">
-            <div class="contact-icon" aria-hidden="true">✉️</div>
+            <div class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
             <div class="contact-text">
               <p>pool.ricardo.1fm@gmail.com</p>
               <span data-i18n="contact_email_label">Correo electrónico</span>

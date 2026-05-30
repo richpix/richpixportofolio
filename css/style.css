@@ -9,12 +9,28 @@
   --text-muted: #6b7280;
   --text-light: #9ca3af;
   --card-bg: #e0e5ec;
+  --nav-bg: #e0e5ec;
   --neu-convex: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
   --neu-inset: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
   --neu-btn: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
   --neu-flat: 8px 8px 20px var(--shadow-dark), -8px -8px 20px var(--shadow-light);
   --radius: 18px;
   --radius-sm: 12px;
+  --transition-theme: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a2e;
+  --shadow-light: #252542;
+  --shadow-dark: #0f0f1a;
+  --primary: #6ba3ff;
+  --primary-dark: #4a8ae8;
+  --accent: #8b7fff;
+  --text: #e0e0e0;
+  --text-muted: #9ca3af;
+  --text-light: #6b7280;
+  --card-bg: #16213e;
+  --nav-bg: #1a1a2e;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,15 +43,17 @@ body {
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  transition: background var(--transition-theme), color var(--transition-theme);
 }
 
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 100;
   padding: 14px 5%;
-  background: var(--bg);
+  background: var(--nav-bg);
   box-shadow: 0 4px 18px rgba(163,177,198,0.5);
   display: flex; align-items: center; justify-content: space-between;
+  transition: background var(--transition-theme);
 }
 .nav-logo {
   font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px;
@@ -64,6 +82,16 @@ nav {
   box-shadow: var(--neu-btn); transition: all .2s;
 }
 .lang-btn:hover { box-shadow: var(--neu-inset); }
+
+.theme-btn {
+  padding: 7px 12px; border-radius: 50px; border: none; cursor: pointer;
+  background: var(--bg); font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem; font-weight: 700; color: var(--accent);
+  box-shadow: var(--neu-btn); transition: all .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-btn:hover { box-shadow: var(--neu-inset); }
+.theme-btn svg { display: block; }
 
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
@@ -114,33 +142,35 @@ nav {
 
   /* Estilos uniformes para enlaces Y botón de idioma */
   .nav-links a,
-  .nav-links .lang-btn {
-    font-size: 1.2rem;      /* Mismo tamaño */
-    padding: 12px 32px;     /* Mismo padding */
+  .nav-links .lang-btn,
+  .nav-links .theme-btn {
+    font-size: 1.2rem;
+    padding: 12px 32px;
     width: auto;
-    min-width: 160px;       /* Ancho mínimo consistente */
+    min-width: 160px;
     text-align: center;
     border-radius: 50px;
     display: inline-block;
-    margin: 8px 0;              /* Margen vertical uniforme */
+    margin: 8px 0;
   }
 
-  /* Asegurar que el botón herede todos los estilos */
-  .nav-links .lang-btn {
+  .nav-links .lang-btn,
+  .nav-links .theme-btn {
     background: var(--bg);
     font-family: inherit;
     margin: 0;
     cursor: pointer;
   }
 
-  /* Opcional: eliminar box-shadow en móvil si causa problemas */
   .nav-links a,
-  .nav-links .lang-btn {
+  .nav-links .lang-btn,
+  .nav-links .theme-btn {
     box-shadow: var(--neu-btn);
   }
-  
+
   .nav-links a:hover,
-  .nav-links .lang-btn:hover {
+  .nav-links .lang-btn:hover,
+  .nav-links .theme-btn:hover {
     box-shadow: var(--neu-inset);
   }
 }
@@ -437,7 +467,11 @@ footer {
   display: flex; align-items: center; justify-content: center;
   padding: 20px;
   opacity: 0; pointer-events: none;
-  transition: opacity .3s ease;
+  transition: opacity .3s ease, background .3s ease;
+}
+
+[data-theme="dark"] #modalOverlay {
+  background: rgba(26,26,46,0.8);
 }
 #modalOverlay.open { opacity: 1; pointer-events: all; }
 
